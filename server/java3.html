@@ -1,0 +1,77 @@
+<html> 
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Начальная страница работы с логгером</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body> 
+  <canvas width="500" height="500" id="canvas"></canvas> 
+  <script> 
+var data = [ -30, -15, 15, 30, 40 ]; //вот здесь должна быть запись показаний с датчиков
+	// получаем указатель на холст
+var canvas = document.getElementById('canvas'); 
+  
+// получаем указатель на контекст рисования
+var c = canvas.getContext('2d'); 
+  
+// рисуем фон
+c.fillStyle = "white"; 
+c.fillRect(0,0,500,500); 
+  
+// рисуем данные
+c.fillStyle = "green"; 
+for(var i=0; i<data.length; i++) { 
+  var dp = data[i]; 
+  if(dp<=-0)
+  {c.fillStyle = "turquoise";}
+  if(dp<=-20)
+  {c.fillStyle = "blue";}
+  if(dp>=0)
+  {c.fillStyle = "orange";}
+  if(dp>=20)
+  {c.fillStyle = "green";}
+  c.fillRect(40 + i*60, 245-dp*4 , 50, dp*4); 
+}
+// рисуем осевые линии
+c.fillStyle = "black"; 
+c.lineWidth = 3.0; 
+c.beginPath(); 
+c.moveTo(30,5); 
+c.lineTo(30,490); 
+c.moveTo(30,245);
+c.lineTo(490,245); 
+c.stroke();
+
+
+// рисуем текст и вертикальные линии
+c.fillStyle = "black"; 
+for(var i=0; i<7; i++) { 
+  c.fillText((6-i)*10 + "C",5, i*40+5); 
+  c.beginPath(); 
+  c.moveTo(25,i*40+5); 
+  c.lineTo(30,i*40+5); 
+  c.stroke(); 
+}
+
+for(var i=7; i<13; i++) { 
+  c.fillText(0-(i-6)*10 + "C",5, i*40+5); 
+  c.beginPath(); 
+  c.moveTo(25,i*40+5); 
+  c.lineTo(30,i*40+5); 
+  c.stroke(); 
+}
+
+var labels = ["0,3-m","0,6-m","0,9-m","1,2-m","1,5-m"]; 
+// выводим текст
+for(var i=0; i<5; i++) { 
+  c.fillText(labels[i], 50+ i*60, 265); 
+}
+  </script> 
+  
+<p>Показания датчиков:</p>
+
+  
+</body> 
+</html>

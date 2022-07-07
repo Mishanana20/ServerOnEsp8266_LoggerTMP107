@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    color: #5d1859;
+    background-color: #edabec;
+
+}
+.button {
+      background-color: #FF8015;
+      border: none;
+      color: green;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 4px;
+      cursor: pointer;
+      }
+
+#canvas {
+    border: 1px solid black;
+}

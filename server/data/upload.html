@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Загрузка файла в микроконтроллер</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+<article>
+    <h1>Загрузить файл на микроконтроллер</h1>
+    <p>Выберите файл для загрузки. Существующие файлы будут заменены.</p>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" id="file" name="data" class="inputfile" >
+		<label for="file" class="botr">Choose a file</label>
+        <input class="botr" type="submit" value="Upload">
+    </form>
+</article>
+</body>
+
+</html>

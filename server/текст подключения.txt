@@ -1,0 +1,29 @@
+
+const char* ssid = "MyLogger";       // SSID
+const char* password = "12345678";  // пароль
+
+IPAddress local_ip(192,168,0,10);  //статический IP
+IPAddress gateway(192,168,0,1);
+IPAddress subnet(255,255,255,0);
+
+ESP8266WebServer server(80);    // Создайте объект веб-сервера, который прослушивает HTTP-запрос на порту 80
+
+Serial.print("Setting soft-AP configuration ... ");
+Serial.println(WiFi.softAPConfig(local_ip, gateway, subnet) ? "Ready" : "Failed!"); //применяем заданные параметры
+
+Serial.print("Setting soft-AP ... ");
+Serial.println(WiFi.softAP("MyLoggerPredDiplom") ? "Ready" : "Failed!");
+
+
+IPAddress IP = WiFi.softAPIP();
+Serial.print("AP IP address: ");
+Serial.println(IP);
+
+server.on("/javascript", HTTP_GET, []() { // если клиент перешел на страницу графиков
+javascriptCode();
+});
+
+ server.begin();     
+ void loop() {
+  server.handleClient();
+ }
